@@ -39,7 +39,8 @@ weixin:function(req,res){
   }
 }
 ```
-3. 依据接口文档实现业务逻辑(下面我们以接入微信JS-SDK为Demo)
+
+**接入指南结束依据接口文档实现业务逻辑(下面我们以接入微信JS-SDK为Demo)**
 
 ## 接入微信JS-SDK
 
@@ -48,6 +49,7 @@ weixin:function(req,res){
 #### 1. 获取access_token
 > http请求方式: GET
 > https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+
 #### 2. 通过access_token获取jsapi_ticket（jsapi_ticket是公众号用于调用微信JS接口的临时票据。所以我们需要调用微信JS接口时，必须要有这个）
 #### 3. 生成JS-SDK权限验证的签名：signature
 算法见：[生成JS-SDK权限验证的签名算法](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
@@ -68,7 +70,9 @@ function makeSignature(jsapi_ticket,noncestr,timestamp,url){
   + 设置JS接口安全域名后，公众号开发者可在该域名下调用微信开放的JS接口。（域名必须是一级或一级以上域名，须通过ICP备案的验证）
   + ![绑定域名](https://mmbiz.qlogo.cn/mmbiz/E7ia3F4UicMx8k28bBHO9FMYsNxicX7BGB5CbbiaFryicPZPCd6YMJPQEtx8z8XwVWQqCnT83YtQgONp2eEHkgs5BxA/0?wx_fmt=png)
   + ![填写域名](https://mmbiz.qlogo.cn/mmbiz/E7ia3F4UicMx8k28bBHO9FMYsNxicX7BGB5Q0Po2ntZODU2f7Vd1AaZFiaRSrxsvkyFfqZ3FOeGu8zrB4ncVfJfPMQ/0?wx_fmt=png)
+ 
 #### 2. 引入JS文件(在需要调用JS接口的页面引入JS文件:[JS文件地址](http://res.wx.qq.com/open/js/jweixin-1.0.0.js)，可下载到自己服务器，然后引入)
+
 #### 3. 通过config接口注入权限验证配置
 ```js
 wx.config({
@@ -81,12 +85,14 @@ wx.config({
 });
 ```
 注：config中的参数也可以通过后端返回，然后在前端设置。
+
 #### 4. 通过ready接口处理成功验证
 ```js
 wx.ready(function(){
   // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 });
 ```
+
 #### 5. 通过error接口处理失败验证
 ```js
 wx.error(function(res){
