@@ -39,7 +39,9 @@ weixin:function(req,res){
   }
 }
 ```
+
 接入指南结束
+
 **依据接口文档实现业务逻辑(下面我们以接入微信JS-SDK为Demo)**
 
 ## 接入微信JS-SDK
