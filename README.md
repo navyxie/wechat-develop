@@ -127,3 +127,5 @@ wx.error(function(res){
 > https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
 
 关于如何接入微信开放平台的讲解就到这里，这里有一个实战例子供大家参考：[微信开放平台接入Demo](https://github.com/navyxie/wechat-develop-code)
+
+**同时，在不接入微信API的情况下设置自定义分享内容（图片、链接、标题），有需要可以看这里[https://github.com/navyxie/weixin_js](https://github.com/navyxie/weixin_js)**
